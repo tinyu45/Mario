@@ -3,18 +3,26 @@ using System.Collections;
 
 public class Mario : MonoBehaviour
 {
+	/***游戏结束***/
+	float OverHeight = -10; 
+	int life;
+	public static int score;
+
+
+	/***
+	 * 主相机相关***
+	 * ***/
 	private Transform mainCT; //主相机
-	//相机位置
 	float mc_Min_X=0;
 	float mc_Max_x=248;
-	float mc_Min_y=-2;
-	float mc_Max_y=25;
-	float offset_y;
+	private bool follow=false; //是否跟随
+	float offset_y;  //偏移量
 
 
 
-	private bool follow=false;
-
+	/***
+	 * 跳跃相关
+	 * ***/
 	private float jumpForce=220;  //跳跃力
 	int jcount;
 	float jtimer;
@@ -25,6 +33,8 @@ public class Mario : MonoBehaviour
 		mainCT = Camera.main.transform;
 		jcount = 0;
 		jtimer = 0;
+		life = 3;
+		score = 0;
 	}
 
 
@@ -63,10 +73,7 @@ public class Mario : MonoBehaviour
 		if (jcount != 0) {
 			jtimer += Time.deltaTime;
 		} 
-
-
-
-
+			
 		if (Input.GetKey (KeyCode.Space)) {
 			ani.SetBool ("jump", true);
 		}
@@ -101,14 +108,52 @@ public class Mario : MonoBehaviour
 		}
 
 		if (ani.GetBool ("move")) {
-			transform.Translate(new Vector3 (3, 0, 0) * Time.deltaTime);
+			transform.Translate(new Vector3 (3, 0, 0) * Time.deltaTime);  //Mario Move
 		}
 
 		if (transform.position.x >= 0 && !follow) {
 			follow = true;
 		}
 		CamerFllow ();
+
+
+
+		/***判断游戏结束***/
+		if (transform.position.y < OverHeight) {
+			print ("GAME OVER");
+		}
+
 	}
+
+
+
+	/*****/
+	public void OnCollisionEnter2D(Collision2D col){
+		print (col.gameObject.name);  //BadFlower / Monster
+		switch(col.gameObject.tag){
+		case "BadFlower":
+			this.life--;  //食人花
+			break;
+
+
+		case "Monster":
+			if (score > 3) {
+				score -= 3;
+			} else {
+				this.life -= 1;
+			}
+			break;
+
+		case "MonsterTop":
+			//print (col.transform.parent.name);
+			Destroy (col.transform.parent.gameObject);
+			break;
+
+		default:break;
+		}
+	}
+
+
 
 
 

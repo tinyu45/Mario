@@ -13,13 +13,14 @@ public class Master : Enemy
 	// Update is called once per frame
 	void Update ()
 	{
-		transform.Translate (new Vector3(-1,0,0)*Time.deltaTime);
+		transform.parent.Translate (new Vector3(-1,0,0)*Time.deltaTime);
 	}
 
 
-	void OnCollisionEnter2D(Collision2D col){
+
+	void OnTriggerEnter2D(Collider2D col){
 		if (col.gameObject.tag=="Obscale") {
-			transform.Rotate (0, 180, 0);
+			transform.parent.Rotate (0, 180, 0);
 		}
 	}
 }
