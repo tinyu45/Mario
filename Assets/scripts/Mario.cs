@@ -9,6 +9,12 @@ public class Mario : MonoBehaviour
 	public static int score;
 
 
+
+	/**贴图***/
+	public Sprite[] txuers; 
+
+
+
 	/***
 	 * 主相机相关***
 	 * ***/
@@ -129,7 +135,7 @@ public class Mario : MonoBehaviour
 
 	/*****/
 	public void OnCollisionEnter2D(Collision2D col){
-		print (col.gameObject.name);  //BadFlower / Monster
+		//print (col.gameObject.name);  //BadFlower / Monster
 		switch(col.gameObject.tag){
 		case "BadFlower":
 			this.life--;  //食人花
@@ -149,10 +155,65 @@ public class Mario : MonoBehaviour
 			Destroy (col.transform.parent.gameObject);
 			break;
 
+
+		case "Magic": //神奇的?号
+			GameObject magic = col.gameObject;
+			magic.GetComponent<SpriteRenderer> ().sprite = txuers [0]; //换为普通砖块图片
+			break;
+
+
+		case "Brick": //普通砖块
+			Destroy(col.gameObject);
+			break;
+
+		
+		case "Hide":  //隐藏块
+			GameObject Hide = col.gameObject;
+			Hide.GetComponent<SpriteRenderer> ().sprite = txuers [1]; //换为硬砖块图片
+			break;
+
+
 		default:break;
 		}
 	}
 
+
+
+
+	/*****/
+	public void OnCollisionExit2D(Collision2D col){
+		//print (col.gameObject.name);  //BadFlower / Monster
+		switch(col.gameObject.tag){
+		case "BadFlower":
+			  //食人花
+			break;
+
+
+		case "Monster":
+
+			break;
+
+		case "MonsterTop":
+
+			break;
+
+
+		case "Magic": //神奇的?号
+			col.gameObject.tag="Brick";
+			break;
+
+
+		case "Brick": //普通砖块
+			
+			break;
+
+		case "Hide": //隐藏块
+			col.gameObject.tag="Hard";
+			break;
+
+		default:break;
+		}
+	}
 
 
 

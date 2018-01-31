@@ -8,6 +8,10 @@ TagManager:
   - BadFlower
   - Monster
   - MonsterTop
+  - Magic
+  - Brick
+  - Hide
+  - Hard
   layers:
   - Default
   - TransparentFX
