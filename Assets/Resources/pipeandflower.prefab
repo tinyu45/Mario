@@ -23,9 +23,10 @@ GameObject:
   - component: {fileID: 111266382232585822}
   - component: {fileID: 95791146337635000}
   - component: {fileID: 114194577121396716}
+  - component: {fileID: 61660761180947998}
   m_Layer: 0
   m_Name: hau
-  m_TagString: Untagged
+  m_TagString: BadFlower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39,9 +40,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4680251681743650}
   - component: {fileID: 212335568435462748}
+  - component: {fileID: 61727242545954456}
   m_Layer: 0
   m_Name: pipeandflower
-  m_TagString: Untagged
+  m_TagString: Obscale
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,6 +75,56 @@ Transform:
   m_Father: {fileID: 4680251681743650}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &61660761180947998
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1427336705562210}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0088799, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.55, y: 0.58}
+    newSize: {x: 0.55, y: 0.58}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.43752146, y: 0.58}
+  m_EdgeRadius: 0
+--- !u!61 &61727242545954456
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1569252361412278}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0034941435, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.71, y: 1.47}
+    newSize: {x: 0.71, y: 1.47}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8288028, y: 1.47}
+  m_EdgeRadius: 0
 --- !u!95 &95791146337635000
 Animator:
   serializedVersion: 3

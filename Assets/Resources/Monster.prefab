@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 212453090926113390}
   - component: {fileID: 50935144151410222}
   - component: {fileID: 61505914456129312}
-  - component: {fileID: 114937094059975172}
   - component: {fileID: 111743528537304458}
   - component: {fileID: 95807983759498392}
+  - component: {fileID: 114310953873904530}
   m_Layer: 0
   m_Name: main
   m_TagString: Monster
@@ -83,7 +83,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1280136559484002}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.536, y: -4.04, z: 0}
+  m_LocalPosition: {x: -4.41, y: -4.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4076798053717678}
@@ -98,7 +98,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1519989010129796}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.202, y: 0.292, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4508742425156526}
@@ -133,10 +133,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.09557392}
+  m_Offset: {x: -0.0045936108, y: -0.032700807}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -147,7 +147,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.3888532}
+  m_Size: {x: 0.54593897, y: 0.5145994}
   m_EdgeRadius: 0
 --- !u!68 &68000931185627342
 EdgeCollider2D:
@@ -164,11 +164,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.18697166, y: 0.15962909}
-  - {x: -0.12176514, y: 0.25434157}
-  - {x: -0.021726608, y: 0.31556246}
-  - {x: 0.12008667, y: 0.25115678}
-  - {x: 0.19895077, y: 0.17508219}
+  - {x: -0.29341638, y: 0.0044911504}
+  - {x: -0.11525999, y: 0.0044911504}
 --- !u!95 &95807983759498392
 Animator:
   serializedVersion: 3
@@ -200,7 +197,7 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &114937094059975172
+--- !u!114 &114310953873904530
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

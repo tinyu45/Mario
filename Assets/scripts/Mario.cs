@@ -1,11 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Mario : MonoBehaviour
 {
+	//游戏UI相关
+	public Text time;
+	public Text scotext;
+	public Text lifebox;
+	float timego;//计时器
+	bool canMove;
+
+
 	/***游戏结束***/
 	float OverHeight = -10; 
 	int life;
+	bool meetFlower;
 	public static int score;
 
 
@@ -26,102 +37,115 @@ public class Mario : MonoBehaviour
 	private float jumpForce=220;  //跳跃力
 	int jcount;
 	float jtimer;
-
+	Animator ani;
 
 	void Start ()
 	{
 		mainCT = Camera.main.transform;
 		jcount = 0;
 		jtimer = 0;
-		life = 3;
+		life = 5;
 		score = 0;
+		timego = 0;
+		meetFlower = false;
+		canMove = true;
+		UpdateUI ();
+		ani = GetComponent<Animator> ();
 	}
 
 
 	void Update ()
 	{
-		Animator ani = GetComponent<Animator> ();
-		if (Input.GetKey (KeyCode.LeftArrow)) {
-			if (!ani.GetBool ("jump")) {
-				ani.SetBool ("move", true);
+		if (canMove) {
+			if (Input.GetKey (KeyCode.LeftArrow)) {
+				if (!ani.GetBool ("jump")) {
+					ani.SetBool ("move", true);
+				}
+				if (transform.rotation == Quaternion.identity) {
+					transform.Rotate (new Vector3 (0, 180, 0));
+				}
 			}
-			if (transform.rotation == Quaternion.identity) {
-				transform.Rotate (new Vector3 (0, 180, 0));
+				
+			if (Input.GetKey (KeyCode.RightArrow)) {
+				if (!ani.GetBool ("jump")) {
+					ani.SetBool ("move", true);
+				}
+				if (transform.rotation != Quaternion.identity) {
+					transform.rotation = Quaternion.identity;
+				}
 			}
-		}
-			
-		if (Input.GetKey (KeyCode.RightArrow)) {
-			if (!ani.GetBool ("jump")) {
-				ani.SetBool ("move", true);
+
+
+
+
+			/**跳跃***/
+			if (Input.GetKeyDown (KeyCode.Space)) {
+				if (jcount <3) { //最多跳三次 
+					GetComponent<Rigidbody2D> ().AddForce (new Vector2(0, jumpForce));
+					AudioManger.Instance.PlaySound ("Sounds/jump");
+					jcount++;
+				}
 			}
-			if (transform.rotation != Quaternion.identity) {
-				transform.rotation = Quaternion.identity;
+
+			if (jcount != 0) {
+				jtimer += Time.deltaTime;
+			} 
+				
+			if (Input.GetKey (KeyCode.Space)) {
+				ani.SetBool ("jump", true);
 			}
-		}
 
 
-
-
-		/**跳跃***/
-		if (Input.GetKeyDown (KeyCode.Space)) {
-			if (jcount <3) { //最多跳三次 
-				GetComponent<Rigidbody2D> ().AddForce (new Vector2(0, jumpForce));
-				jcount++;
+			if (Input.GetKeyUp (KeyCode.Space)) {
+				ani.SetBool ("jump", false);
+				if (jtimer > 3f) {
+					jcount = 0;
+					jtimer = 0;
+				}
 			}
-		}
-
-		if (jcount != 0) {
-			jtimer += Time.deltaTime;
-		} 
-			
-		if (Input.GetKey (KeyCode.Space)) {
-			ani.SetBool ("jump", true);
-		}
 
 
-		if (Input.GetKeyUp (KeyCode.Space)) {
-			ani.SetBool ("jump", false);
-			if (jtimer > 3f) {
-				jcount = 0;
-				jtimer = 0;
+
+
+			/***蹲下***/
+			if (Input.GetKey (KeyCode.DownArrow)) {
+				ani.SetBool ("down", true);
+				GetComponent<Rigidbody2D> ().gravityScale = 0;  //去除碰撞器 关闭重力
+				GetComponent<BoxCollider2D> ().enabled=false;
 			}
+
+			if (Input.GetKeyUp (KeyCode.DownArrow)) {
+				ani.SetBool ("down", false);
+				GetComponent<Rigidbody2D> ().gravityScale = 1;  //去除碰撞器 关闭重力
+				GetComponent<BoxCollider2D> ().enabled=true;
+			}
+
+
+
+
+			//左键 或 右键抬起
+			if (Input.GetKeyUp (KeyCode.LeftArrow) || Input.GetKeyUp (KeyCode.RightArrow)) {
+				ani.SetBool ("move", false);
+			}
+
+			if (ani.GetBool ("move")) {
+				transform.Translate(new Vector3 (4, 0, 0) * Time.deltaTime);  //Mario Move
+			}
+
+			if (transform.position.x >= 0 && !follow) {
+				follow = true;
+			}
+
 		}
 
-
-
-
-		/***蹲下***/
-		if (Input.GetKey (KeyCode.DownArrow)) {
-			ani.SetBool ("down", true);
-			//GetComponent<BoxCollider2D>().
-		}
-
-		if (Input.GetKeyUp (KeyCode.DownArrow)) {
-			ani.SetBool ("down", false);
-		}
-
-
-
-
-		//左键 或 右键抬起
-		if (Input.GetKeyUp (KeyCode.LeftArrow) || Input.GetKeyUp (KeyCode.RightArrow)) {
-			ani.SetBool ("move", false);
-		}
-
-		if (ani.GetBool ("move")) {
-			transform.Translate(new Vector3 (3, 0, 0) * Time.deltaTime);  //Mario Move
-		}
-
-		if (transform.position.x >= 0 && !follow) {
-			follow = true;
-		}
 		CamerFllow ();
 
-
+		UpdateUI ();
 
 		/***判断游戏结束***/
-		if (transform.position.y < OverHeight) {
+		if (transform.position.y < OverHeight || this.life<=0) {
 			print ("GAME OVER");
+			SceneManager.LoadScene("Over");
 		}
 
 	}
@@ -132,8 +156,17 @@ public class Mario : MonoBehaviour
 	public void OnCollisionEnter2D(Collision2D col){
 		//print (col.gameObject.name);  //BadFlower / Monster
 		switch(col.gameObject.tag){
+
+		case "Untagged":
+			meetFlower=false;
+			break;
+
 		case "BadFlower":
-			this.life--;  //食人花
+			if (!meetFlower) {
+				meetFlower = true;
+				this.life--; 
+				//食人花
+			}
 			break;
 
 
@@ -150,11 +183,20 @@ public class Mario : MonoBehaviour
 			Destroy (col.transform.parent.gameObject);
 			break;
 
+		case "Coin": //金币
+			score++;
+			Destroy (col.gameObject);
+			break;
+
+		case "END": //终点塔
+			canMove = false;
+			ani.SetBool ("move", false);
+			ani.SetBool ("jump", false);
+			break;
 
 		default:break;
 		}
 	}
-
 
 
 
@@ -180,6 +222,16 @@ public class Mario : MonoBehaviour
 			}
 
 		}
+	}
+
+
+	//更新UI
+	void UpdateUI(){
+		timego += Time.deltaTime;
+		string str = string.Format ("{0:00}:{1:00}",(int)(timego/60),(int)(timego%60));
+		time.text = str;
+		scotext.text="Score："+score;
+		lifebox.text="Life："+life;
 	}
 
 
