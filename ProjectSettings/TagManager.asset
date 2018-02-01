@@ -12,6 +12,7 @@ TagManager:
   - Brick
   - Hide
   - Hard
+  - Mario
   layers:
   - Default
   - TransparentFX
