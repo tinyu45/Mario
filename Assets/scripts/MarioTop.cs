@@ -54,7 +54,8 @@ public class MarioTop : MonoBehaviour {
 		switch(col.gameObject.tag){
 
 		case "Magic": //神奇的?号
-			col.gameObject.tag="Brick";
+			col.gameObject.tag = "Brick";
+			Mario.score ++;
 			break;
 
 

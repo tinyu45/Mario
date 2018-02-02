@@ -6,8 +6,9 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
+    <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{7257B17B-F6B0-5A16-4330-CA5C56772F85}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -38,62 +39,64 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.XML" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>D:\ware\Unity 2017\Editor\Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>D:/ware/Unity 2017/Editor/Data/Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>D:\ware\Unity 2017\Editor\Data\Managed\UnityEditor.dll</HintPath>
+      <HintPath>D:/ware/Unity 2017/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Flag.cs" />
-    <Compile Include="Assets\scripts\AudioManger.cs" />
-    <Compile Include="Assets\scripts\BadFlower.cs" />
-    <Compile Include="Assets\scripts\Enemy.cs" />
-    <Compile Include="Assets\scripts\Flower.cs" />
-    <Compile Include="Assets\scripts\GameCtrol.cs" />
-    <Compile Include="Assets\scripts\Mario.cs" />
-    <Compile Include="Assets\scripts\MarioTop.cs" />
-    <Compile Include="Assets\scripts\Master.cs" />
-    <Compile Include="Assets\scripts\Over.cs" />
-    <Compile Include="Assets\Test.cs" />
-    <Reference Include="UnityEngine.UI">
-      <HintPath>D:\ware\Unity 2017\Editor\Data\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>D:\ware\Unity 2017\Editor\Data\UnityExtensions\Unity\Networking\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.TestRunner">
-      <HintPath>D:\ware\Unity 2017\Editor\Data\UnityExtensions\Unity\TestRunner\UnityEngine.TestRunner.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>D:\ware\Unity 2017\Editor\Data\UnityExtensions\Unity\TestRunner\net35\unity-custom\nunit.framework.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Timeline">
-      <HintPath>D:\ware\Unity 2017\Editor\Data\UnityExtensions\Unity\Timeline\RuntimeEditor\UnityEngine.Timeline.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UIAutomation">
-      <HintPath>D:\ware\Unity 2017\Editor\Data\UnityExtensions\Unity\UIAutomation\UnityEngine.UIAutomation.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.GoogleAudioSpatializer">
-      <HintPath>D:\ware\Unity 2017\Editor\Data\UnityExtensions\Unity\UnityGoogleAudioSpatializer\RuntimeEditor\UnityEngine.GoogleAudioSpatializer.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.HoloLens">
-      <HintPath>D:\ware\Unity 2017\Editor\Data\UnityExtensions\Unity\UnityHoloLens\RuntimeEditor\UnityEngine.HoloLens.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.SpatialTracking">
-      <HintPath>D:\ware\Unity 2017\Editor\Data\UnityExtensions\Unity\UnitySpatialTracking\RuntimeEditor\UnityEngine.SpatialTracking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Analytics">
-      <HintPath>C:\Users\hello\AppData\LocalLow\Unity\cache\packages\packages.unity.com\com.unity.analytics%401.0.1\UnityEngine.Analytics.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.Purchasing">
-      <HintPath>C:\Users\hello\AppData\LocalLow\Unity\cache\packages\packages.unity.com\com.unity.purchasing%401.0.1\UnityEngine.Purchasing.dll</HintPath>
-    </Reference>
+     <Compile Include="Assets\scripts\AudioManger.cs" />
+     <Compile Include="Assets\scripts\BadFlower.cs" />
+     <Compile Include="Assets\scripts\BgScroll.cs" />
+     <Compile Include="Assets\scripts\Enemy.cs" />
+     <Compile Include="Assets\scripts\Flag.cs" />
+     <Compile Include="Assets\scripts\Flower.cs" />
+     <Compile Include="Assets\scripts\GameCtrol.cs" />
+     <Compile Include="Assets\scripts\Hide.cs" />
+     <Compile Include="Assets\scripts\Mario.cs" />
+     <Compile Include="Assets\scripts\MarioTop.cs" />
+     <Compile Include="Assets\scripts\Master.cs" />
+     <Compile Include="Assets\scripts\Over.cs" />
+     <Compile Include="Assets\Test.cs" />
+ <Reference Include="UnityEngine.UI">
+ <HintPath>D:/ware/Unity 2017/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>D:/ware/Unity 2017/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.TestRunner">
+ <HintPath>D:/ware/Unity 2017/Editor/Data/UnityExtensions/Unity/TestRunner/UnityEngine.TestRunner.dll</HintPath>
+ </Reference>
+ <Reference Include="nunit.framework">
+ <HintPath>D:/ware/Unity 2017/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Timeline">
+ <HintPath>D:/ware/Unity 2017/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UIAutomation">
+ <HintPath>D:/ware/Unity 2017/Editor/Data/UnityExtensions/Unity/UIAutomation/UnityEngine.UIAutomation.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.GoogleAudioSpatializer">
+ <HintPath>D:/ware/Unity 2017/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.HoloLens">
+ <HintPath>D:/ware/Unity 2017/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.SpatialTracking">
+ <HintPath>D:/ware/Unity 2017/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>C:/Users/hello/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.analytics@1.0.1/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Purchasing">
+ <HintPath>C:/Users/hello/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.purchasing@1.0.1/UnityEngine.Purchasing.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -103,4 +106,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  
 </Project>

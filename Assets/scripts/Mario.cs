@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class Mario : MonoBehaviour
 {
+
+	//星星
+	public GameObject star;
+	static Vector3 startPos;
+
 	//游戏UI相关
 	public Text time;
 	public Text scotext;
@@ -49,6 +54,7 @@ public class Mario : MonoBehaviour
 		timego = 0;
 		meetFlower = false;
 		canMove = true;
+		startPos = transform.position;
 		UpdateUI ();
 		ani = GetComponent<Animator> ();
 	}
@@ -142,8 +148,15 @@ public class Mario : MonoBehaviour
 
 		UpdateUI ();
 
+
+		/***下坠***/
+		if (transform.position.y < OverHeight) {
+			this.life--;
+			transform.position = startPos; //初始坐标；
+		}
+
 		/***判断游戏结束***/
-		if (transform.position.y < OverHeight || this.life<=0) {
+		if(this.life<=0){
 			print ("GAME OVER");
 			SceneManager.LoadScene("Over");
 		}
@@ -192,6 +205,7 @@ public class Mario : MonoBehaviour
 			canMove = false;
 			ani.SetBool ("move", false);
 			ani.SetBool ("jump", false);
+			star.GetComponent<Animator> ().SetTrigger ("star");
 			break;
 
 		default:break;

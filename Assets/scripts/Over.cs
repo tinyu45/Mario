@@ -21,4 +21,10 @@ public class Over : MonoBehaviour {
 		SceneManager.LoadScene ("Main");
 	}
 
+
+	/****按钮 quit点击***/
+	public void OnQuitClick(){
+		Application.Quit ();
+	}
+
 }

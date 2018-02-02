@@ -1,9 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\Mario.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\BgScroll.cs">
     <Files>
-      <File FileName="Assets\Flag.cs" Line="8" Column="17" />
-      <File FileName="Assets\scripts\Mario.cs" Line="221" Column="6" />
+      <File FileName="Assets\scripts\Mario.cs" Line="153" Column="43" />
+      <File FileName="Assets\scripts\MarioTop.cs" Line="62" Column="23" />
+      <File FileName="Assets\scripts\Master.cs" Line="30" Column="2" />
+      <File FileName="Assets\BgScroll.cs" Line="15" Column="18" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
