@@ -66,10 +66,9 @@ public class MarioTop : MonoBehaviour {
 		case "Hide": //隐藏块
 			col.gameObject.tag="Hard";
 			break;
-
+		
 		default:break;
 		}
 	}
-		
 
 }

@@ -22,7 +22,7 @@ public class Master : Enemy
 		if (col.gameObject.tag == "Obscale") {
 			transform.parent.Rotate (0, 180, 0);
 		} else {
-			if (col.gameObject.tag == "BadFlower" || col.gameObject.tag == "Monster") {
+			if (col.gameObject.tag == "BadFlower" || col.gameObject.tag == "Monster") {//
 				this.GetComponent<BoxCollider2D> ().isTrigger = true;
 			}
 		}

@@ -207,6 +207,10 @@ public class Mario : MonoBehaviour
 			ani.SetBool ("jump", false);
 			star.GetComponent<Animator> ().SetTrigger ("star");
 			break;
+		
+		case "Hide": //隐藏快
+			col.gameObject.GetComponent<BoxCollider2D> ().isTrigger = true;
+			break;
 
 		default:break;
 		}
@@ -214,7 +218,13 @@ public class Mario : MonoBehaviour
 
 
 
+	//碰撞离开
+	public void OnTriggerExit2D(Collider2D col){
+		if (col.gameObject.tag == "Hide") {
+			col.gameObject.GetComponent<BoxCollider2D> ().isTrigger = false;
+		}
 
+	}
 
 
 
